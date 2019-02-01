@@ -92,7 +92,7 @@ export class ImageUpload {
 
 				// listen callback
 				xhr.onload = () => {
-					if (xhr.status === 200) {
+					if ([200, 201].includes(xhr.status)) {
 						callbackOK(JSON.parse(xhr.responseText), this.insert.bind(this));
 					} else {
 						callbackKO({
