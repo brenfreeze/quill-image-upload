@@ -92,7 +92,6 @@ export class ImageUpload {
 
 				// listen callback
 				xhr.onload = () => {
-					console.log(xhr.status)
 					if ([200, 201].includes(xhr.status)) {
 						callbackOK(JSON.parse(xhr.responseText), this.insert.bind(this));
 					} else {
@@ -100,7 +99,7 @@ export class ImageUpload {
 							code: xhr.status,
 							type: xhr.statusText,
 							body: xhr.responseText
-						});
+						}, this.insert.bind(this));
 					}
 				};
 
